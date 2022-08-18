@@ -1,0 +1,12 @@
+<h2>It's the list of...</h2>
+<h1><%= @list.name %></h1>
+<h3>Movies</h3>
+<ul>
+<%@list.bookmarks.each do |bookmark|%>
+<li><%= "#{bookmark.movie.poster_url} - #{bookmark.movie.title} - #{bookmark.movie.rating} - #{bookmark.movie.overview} - #{bookmark.comment}"%></li>
+<% end  %>
+</ul>
+
+<button><%= link_to "New bookmark", new_list_bookmark_path(@list) %></button>
+<button><%= link_to "Delete bookmark", bookmark_path(@bookmark), method: :delete %></button>
+<button><%= link_to "Back home", lists_path %></button>

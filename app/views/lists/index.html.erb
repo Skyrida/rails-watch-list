@@ -1,0 +1,10 @@
+<h1>Groovy Movie</h1>
+<h2>My Lists:</h2>
+<ul>
+<%@lists.each do |list|%>
+<% number = 1 %>
+<li><%= link_to "#{number} - #{list.name}", list_path(list) %></li>
+<% number +=1 %>
+<% end  %>
+</ul>
+<button><%= link_to "Create New List", new_list_path %></button>
