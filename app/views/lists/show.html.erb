@@ -1,12 +1,16 @@
 <h2>It's the list of...</h2>
 <h1><%= @list.name %></h1>
 <h3>Movies</h3>
+
 <ul>
 <%@list.bookmarks.each do |bookmark|%>
-<li><%= "#{bookmark.movie.poster_url} - #{bookmark.movie.title} - #{bookmark.movie.rating} - #{bookmark.movie.overview} - #{bookmark.comment}"%></li>
-<% end  %>
+<li><%= image_tag "#{bookmark.movie.poster_url}" %></li>
+<li><strong><%= "#{bookmark.movie.title} - #{bookmark.movie.rating}"%></strong></li>
+<li><strong><em>Overview:</strong></em><%= " #{bookmark.movie.overview}"%></li>
+<li><strong><em>Bookmark comment:</strong></em><em><%= " #{bookmark.comment}"%></em></li>
+<button><%= link_to "Delete bookmark", bookmark_path(bookmark), data: {turbo_method: :delete} %></button>
+<% end %>
 </ul>
 
 <button><%= link_to "New bookmark", new_list_bookmark_path(@list) %></button>
-<button><%= link_to "Delete bookmark", bookmark_path(@bookmark), method: :delete %></button>
 <button><%= link_to "Back home", lists_path %></button>
